@@ -1,6 +1,7 @@
 // Imports
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Rocket from './Rocket';
 
 // Bootstrap layout components
 import Container from 'react-bootstrap/Container';
@@ -11,14 +12,13 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 
-interface AppProps { }
+interface AppProps {}
 
-function App({ }: AppProps) {
+function App({}: AppProps) {
   // Return the App component.
   return (
     <div className="App">
       <Container fluid>
-
         {/* Header */}
         <Row>
           <h1>SpaceXploration</h1>
@@ -27,7 +27,7 @@ function App({ }: AppProps) {
         {/* Main Body and Carousel */}
         <Row>
           <Carousel
-            className='main-carousel'
+            className="main-carousel"
             fade={true}
             indicators={false}
             interval={10000}
@@ -35,20 +35,13 @@ function App({ }: AppProps) {
             <Carousel.Item>
               <Container fluid>
                 <Row>
-                  <Col
-                    xs={12} md={6}
-                    className='rocket-container'
-                  >
+                  <Col xs={12} md={6} className="rocket-container">
                     Rocket
-                    <Image
-                      src='./images/Falcon_9_Block_5_landing.png'
-                    />
+                    <Image src="./images/Falcon_9_Block_5_landing.png" />
                   </Col>
-                  <Col
-                    xs={12} md={6}
-                    className='launch-container'
-                  >
+                  <Col xs={12} md={6} className="launch-container">
                     Launch
+                    <Rocket />
                   </Col>
                 </Row>
               </Container>
@@ -56,19 +49,11 @@ function App({ }: AppProps) {
             <Carousel.Item>
               <Container fluid>
                 <Row>
-                  <Col
-                    xs={12} md={6}
-                    className='rocket-container'
-                  >
+                  <Col xs={12} md={6} className="rocket-container">
                     Rocket
-                    <Image
-                      src='./images/Falcon_9_Block_5_landing.png'
-                    />
+                    <Image src="./images/Falcon_9_Block_5_landing.png" />
                   </Col>
-                  <Col
-                    xs={12} md={6}
-                    className='launch-container'
-                  >
+                  <Col xs={12} md={6} className="launch-container">
                     Launch
                   </Col>
                 </Row>
