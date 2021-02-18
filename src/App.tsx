@@ -1,39 +1,83 @@
+// Imports
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-interface AppProps {}
+// Bootstrap layout components
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-function App({}: AppProps) {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
+// React-Bootstrap components
+import Image from 'react-bootstrap/Image';
+import Carousel from 'react-bootstrap/Carousel';
+
+interface AppProps { }
+
+function App({ }: AppProps) {
   // Return the App component.
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+      <Container fluid>
+
+        {/* Header */}
+        <Row>
+          <h1>SpaceXploration</h1>
+        </Row>
+
+        {/* Main Body and Carousel */}
+        <Row>
+          <Carousel
+            className='main-carousel'
+            fade={true}
+            indicators={false}
+            interval={10000}
           >
-            Learn React
-          </a>
-        </p>
-      </header>
+            <Carousel.Item>
+              <Container fluid>
+                <Row>
+                  <Col
+                    xs={12} md={6}
+                    className='rocket-container'
+                  >
+                    Rocket
+                    <Image
+                      src='./images/Falcon_9_Block_5_landing.png'
+                    />
+                  </Col>
+                  <Col
+                    xs={12} md={6}
+                    className='launch-container'
+                  >
+                    Launch
+                  </Col>
+                </Row>
+              </Container>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Container fluid>
+                <Row>
+                  <Col
+                    xs={12} md={6}
+                    className='rocket-container'
+                  >
+                    Rocket
+                    <Image
+                      src='./images/Falcon_9_Block_5_landing.png'
+                    />
+                  </Col>
+                  <Col
+                    xs={12} md={6}
+                    className='launch-container'
+                  >
+                    Launch
+                  </Col>
+                </Row>
+              </Container>
+            </Carousel.Item>
+          </Carousel>
+        </Row>
+      </Container>
     </div>
   );
 }
