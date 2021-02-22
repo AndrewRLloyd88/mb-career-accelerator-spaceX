@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+interface Props {
+  id: string;
+}
+
 interface RocketInterface {
   status: string;
   payload: {
@@ -20,7 +24,7 @@ interface RocketInterface {
   };
 }
 
-const rocket = () => {
+const rocket = (props: Props) => {
   const [rocket, setRocket] = useState<RocketInterface>({
     status: 'loading',
     payload: {
@@ -45,7 +49,7 @@ const rocket = () => {
 
   useEffect(() => {
     axios
-      .get('https://api.spacexdata.com/v4/rockets/5e9d0d95eda69973a809d1ec')
+      .get(`https://api.spacexdata.com/v4/rockets/${props.id}`)
       .then((response) => response)
       .then((response) =>
         setRocket({ status: 'loaded', payload: response.data }),

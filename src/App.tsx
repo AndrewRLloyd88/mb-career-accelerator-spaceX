@@ -16,16 +16,16 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 
-interface AppProps { }
+interface AppProps {}
 
-function App({ }: AppProps) {
+function App({}: AppProps) {
   const [launchSlides, setSlides] = useState([]);
 
   useEffect(() => {
     axios
       .get('https://api.spacexdata.com/v4/launches')
-      .then(response => setSlides(response.data))
-      .catch(error => console.log('API error: ', error));
+      .then((response) => setSlides(response.data))
+      .catch((error) => console.log('API error: ', error));
   }, []);
 
   // Return the App component.
@@ -45,17 +45,15 @@ function App({ }: AppProps) {
             indicators={false}
             interval={10000}
           >
-
             {launchSlides.map((launch: any) => (
               <Carousel.Item key={launch.id}>
                 <Container fluid>
                   <Row>
-
                     {/* Rocket Column */}
                     <Col xs={12} md={6} className="rocket-container">
                       Rocket
-                        <Image src="./images/Falcon_9_Block_5_landing.png" />
-                      <Rocket />
+                      <Image src="./images/Falcon_9_Block_5_landing.png" />
+                      <Rocket id={launch.rocket} />
                     </Col>
 
                     {/* Launch Column */}
@@ -67,14 +65,17 @@ function App({ }: AppProps) {
                       <div>Date: {launch.date_local}</div>
                       <div>Launch ID: {launch.id}</div>
                       {/* <div>Success: {launch.success.toString()}</div> */}
-                      <div>Success: {launch.success === null ? 'Not available' : launch.success.toString()}</div>
+                      <div>
+                        Success:{' '}
+                        {launch.success === null
+                          ? 'Not available'
+                          : launch.success.toString()}
+                      </div>
                     </Col>
-
                   </Row>
                 </Container>
               </Carousel.Item>
             ))}
-
           </Carousel>
         </Row>
       </Container>
