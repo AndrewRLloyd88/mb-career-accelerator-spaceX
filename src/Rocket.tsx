@@ -40,8 +40,8 @@ const rocket = () => {
     },
   });
   const service = rocket.status;
-  console.log(service);
-  console.log(rocket.payload);
+  // console.log(service);
+  // console.log(rocket.payload);
 
   useEffect(() => {
     axios
