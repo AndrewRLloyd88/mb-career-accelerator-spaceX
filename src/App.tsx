@@ -6,6 +6,7 @@ import './App.css';
 
 // Components
 import Rocket from './Rocket';
+import Cores from './Cores';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -54,8 +55,14 @@ function App({}: AppProps) {
                       Rocket
                       <Image src="./images/Falcon_9_Block_5_landing.png" />
                       <Rocket id={launch.rocket} />
+                      {launch.cores[0].core && (
+                        <Row>
+                          {/* Cores */}
+                          Cores
+                          <Cores id={launch.cores[0]} />
+                        </Row>
+                      )}
                     </Col>
-
                     {/* Launch Column */}
                     <Col xs={12} md={6} className="launch-container">
                       Launch
