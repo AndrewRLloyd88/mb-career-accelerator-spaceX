@@ -1,20 +1,33 @@
 // Imports
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import './App.css';
+
+// Components
 import Rocket from './Rocket';
 
-// Bootstrap layout components
+// React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-// React-Bootstrap components
+// React-Bootstrap Components
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 
-interface AppProps {}
+interface AppProps { }
 
-function App({}: AppProps) {
+function App({ }: AppProps) {
+  const [launchSlides, setSlides] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://api.spacexdata.com/v4/launches')
+      .then(response => setSlides(response.data))
+      .catch(error => console.log('API error: ', error));
+  }, []);
+
   // Return the App component.
   return (
     <div className="App">
@@ -32,33 +45,36 @@ function App({}: AppProps) {
             indicators={false}
             interval={10000}
           >
-            <Carousel.Item>
-              <Container fluid>
-                <Row>
-                  <Col xs={12} md={6} className="rocket-container">
-                    Rocket
-                    <Image src="./images/Falcon_9_Block_5_landing.png" />
-                  </Col>
-                  <Col xs={12} md={6} className="launch-container">
-                    Launch
-                    <Rocket />
-                  </Col>
-                </Row>
-              </Container>
-            </Carousel.Item>
-            <Carousel.Item>
-              <Container fluid>
-                <Row>
-                  <Col xs={12} md={6} className="rocket-container">
-                    Rocket
-                    <Image src="./images/Falcon_9_Block_5_landing.png" />
-                  </Col>
-                  <Col xs={12} md={6} className="launch-container">
-                    Launch
-                  </Col>
-                </Row>
-              </Container>
-            </Carousel.Item>
+
+            {launchSlides.map((launch: any) => (
+              <Carousel.Item key={launch.id}>
+                <Container fluid>
+                  <Row>
+
+                    {/* Rocket Column */}
+                    <Col xs={12} md={6} className="rocket-container">
+                      Rocket
+                        <Image src="./images/Falcon_9_Block_5_landing.png" />
+                      <Rocket />
+                    </Col>
+
+                    {/* Launch Column */}
+                    <Col xs={12} md={6} className="launch-container">
+                      Launch
+                      <div>Name: {launch.name}</div>
+                      <div>Details: {launch.details}</div>
+                      <div>Flight Number: {launch.flight_number}</div>
+                      <div>Date: {launch.date_local}</div>
+                      <div>Launch ID: {launch.id}</div>
+                      {/* <div>Success: {launch.success.toString()}</div> */}
+                      <div>Success: {launch.success === null ? 'Not available' : launch.success.toString()}</div>
+                    </Col>
+
+                  </Row>
+                </Container>
+              </Carousel.Item>
+            ))}
+
           </Carousel>
         </Row>
       </Container>
