@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+//our expected props for this component
 interface Props {
   id: string;
 }
 
+//constructing all of the properties for a rocket
 interface RocketInterface {
   status: string;
   payload: {
@@ -44,9 +46,8 @@ const rocket = (props: Props) => {
     },
   });
   const service = rocket.status;
-  // console.log(service);
-  // console.log(rocket.payload);
 
+  //every time page updates get the corresponding rocket info
   useEffect(() => {
     axios
       .get(`https://api.spacexdata.com/v4/rockets/${props.id}`)
