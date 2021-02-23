@@ -6,6 +6,8 @@ import './App.css';
 
 // Components
 import Rocket from './Rocket';
+import Core from './Core';
+import Fairing from './Fairing';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -54,8 +56,17 @@ function App({}: AppProps) {
                       Rocket
                       <Image src="./images/Falcon_9_Block_5_landing.png" />
                       <Rocket id={launch.rocket} />
+                      {/* Cores */}
+                      {/* Does a Core id exist for this flight? */}
+                      {launch.cores[0].core && (
+                        <Row>
+                          Cores
+                          <Core coreObj={launch.cores[0]} />
+                        </Row>
+                      )}
+                      {/* Fairings */}
+                      {/*<Fairing fairing={launch.fairings} />*/}
                     </Col>
-
                     {/* Launch Column */}
                     <Col xs={12} md={6} className="launch-container">
                       Launch

@@ -51,7 +51,6 @@ const rocket = (props: Props) => {
   useEffect(() => {
     axios
       .get(`https://api.spacexdata.com/v4/rockets/${props.id}`)
-      .then((response) => response)
       .then((response) =>
         setRocket({ status: 'loaded', payload: response.data }),
       )
