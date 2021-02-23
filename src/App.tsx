@@ -65,7 +65,12 @@ function App({}: AppProps) {
                         </Row>
                       )}
                       {/* Fairings */}
-                      {/*<Fairing fairing={launch.fairings} />*/}
+                      {launch.fairings && (
+                        <div>
+                          <p>Fairings:</p>
+                          <Fairing fairingObj={launch.fairings} />
+                        </div>
+                      )}
                     </Col>
                     {/* Launch Column */}
                     <Col xs={12} md={6} className="launch-container">
