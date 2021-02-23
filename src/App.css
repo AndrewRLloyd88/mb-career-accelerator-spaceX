@@ -2,7 +2,7 @@
 
 /* Override defaults */
 html,
-body, 
+body,
 .col {
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ body,
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  color:white;
+  color: white;
   background-color: #282c34;
   text-align: center;
 }
@@ -42,6 +42,10 @@ img {
 
 .carousel-control-prev,
 .carousel-control-next {
-	padding-bottom: 30px;
-	width: 4%;
+  padding-bottom: 30px;
+  width: 4%;
+}
+
+.rocket-display {
+  display: flex;
 }
