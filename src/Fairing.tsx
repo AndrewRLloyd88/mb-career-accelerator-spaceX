@@ -17,6 +17,7 @@ const Fairing = (props: Props) => {
       <div>Recovery Attempt: {recovery_attempt ? 'Yes' : 'No'}</div>
       <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
       <div>
+        {/* Eventually Cross Reference This Data with Ship Name/Info */}
         {ships.map((ship) => {
           return (
             <div>
