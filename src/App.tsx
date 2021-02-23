@@ -55,9 +55,10 @@ function App({}: AppProps) {
                       Rocket
                       <Image src="./images/Falcon_9_Block_5_landing.png" />
                       <Rocket id={launch.rocket} />
+                      {/* Cores */}
+                      {/* Does a Core id exist for this flight? */}
                       {launch.cores[0].core && (
                         <Row>
-                          {/* Cores */}
                           Cores
                           <Cores id={launch.cores[0]} />
                         </Row>
