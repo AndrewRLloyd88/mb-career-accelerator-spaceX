@@ -7,6 +7,7 @@ import './App.css';
 // Components
 import Rocket from './Rocket';
 import Core from './Core';
+import Fairing from './Fairing';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -60,9 +61,11 @@ function App({}: AppProps) {
                       {launch.cores[0].core && (
                         <Row>
                           Cores
-                          <Core id={launch.cores[0]} />
+                          <Core coreObj={launch.cores[0]} />
                         </Row>
                       )}
+                      {/* Fairings */}
+                      {/*<Fairing fairing={launch.fairings} />*/}
                     </Col>
                     {/* Launch Column */}
                     <Col xs={12} md={6} className="launch-container">

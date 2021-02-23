@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
 //import types
-import type { FlightCoreInfo } from './types/FlightCoreInfo';
+import type { LaunchCoreInfo } from './types/LaunchCoreInfo';
 import type { CoreSpecificInfo } from './types/CoreSpecificInfo';
 
 //import classes
-import { GetRocketSpecifics } from './classes/GetRocketSpecifics';
+import { GetLaunchComponents } from './classes/GetLaunchComponents';
 
+//Expected props from App.tsx
 interface Props {
-  id: FlightCoreInfo;
+  coreObj: LaunchCoreInfo;
 }
 
 const Core = (props: Props) => {
+  //state to hold the specific core in
   const [thisCore, setThisCore] = useState({} as CoreSpecificInfo);
+  //add a type as GetRocketSpecifics expects it
   const type = 'cores';
-  const { core } = props.id;
+  //destructure the core's ID out for GetRocketSpecifics
+  const { core } = props.coreObj;
 
   useEffect(() => {
     //Instantiate CoreInfo as a new GetRocketSpecifics with type CoreSpecificInfo
-    const coreInfo = new GetRocketSpecifics<CoreSpecificInfo>(type, core);
+    const coreInfo = new GetLaunchComponents<CoreSpecificInfo>(type, core);
+    //call get() method on instance of GetRocketSpeifics
     coreInfo.get().then((data) => {
+      //store data in state
       setThisCore(data);
     });
   }, []);

@@ -1,4 +1,4 @@
-export interface FlightCoreInfo {
+export interface LaunchCoreInfo {
   core: string;
   flight: number;
   gridfins: boolean;
