@@ -6,7 +6,7 @@ import './App.css';
 
 // Components
 import Rocket from './Rocket';
-import Cores from './Cores';
+import Core from './Core';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -60,7 +60,7 @@ function App({}: AppProps) {
                       {launch.cores[0].core && (
                         <Row>
                           Cores
-                          <Cores id={launch.cores[0]} />
+                          <Core id={launch.cores[0]} />
                         </Row>
                       )}
                     </Col>

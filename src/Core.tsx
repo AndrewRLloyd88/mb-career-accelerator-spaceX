@@ -11,7 +11,7 @@ interface Props {
   id: FlightCoreInfo;
 }
 
-const Cores = (props: Props) => {
+const Core = (props: Props) => {
   const [thisCore, setThisCore] = useState({} as CoreSpecificInfo);
   const type = 'cores';
   const { core } = props.id;
@@ -50,4 +50,4 @@ const Cores = (props: Props) => {
   );
 };
 
-export default Cores;
+export default Core;
