@@ -1,60 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+//import types
+import type {
+  RocketSpecificInfo,
+  RocketPayload,
+} from '../types/RocketSpecificInfo';
+
+//import classes
+import { GetLaunchComponents } from '../classes/GetLaunchComponents';
+
 //our expected props for this component
 interface Props {
   id: string;
 }
 
-//constructing all of the properties for a rocket
-interface RocketInterface {
-  status: string;
-  payload: {
-    name: string;
-    type: string;
-    active: boolean;
-    stages: number;
-    boosters: number;
-    cost_per_launch: number;
-    success_rate_pct: number;
-    first_flight: string;
-    country: string;
-    company: string;
-    wikipedia: string;
-    description: string;
-    id: string;
-  };
-}
-
 const rocket = (props: Props) => {
-  const [rocket, setRocket] = useState<RocketInterface>({
+  const [rocket, setRocket] = useState<RocketSpecificInfo>({
     status: 'loading',
-    payload: {
-      name: '',
-      type: '',
-      active: false,
-      stages: 0,
-      boosters: 0,
-      cost_per_launch: 0,
-      success_rate_pct: 0,
-      first_flight: '',
-      country: '',
-      company: '',
-      wikipedia: '',
-      description: '',
-      id: '',
-    },
+    payload: {} as RocketPayload,
   });
   const service = rocket.status;
+  const type = 'rockets';
+  const id = props.id;
 
   //every time page updates get the corresponding rocket info
   useEffect(() => {
-    axios
-      .get(`https://api.spacexdata.com/v4/rockets/${props.id}`)
-      .then((response) =>
-        setRocket({ status: 'loaded', payload: response.data }),
-      )
-      .catch((error) => setRocket({ status: 'error', payload: error }));
+    //Instantiate RocketInfo as a new GetRocketSpecifics with typed as RocketPayload(the expected return object)
+    const rocketInfo = new GetLaunchComponents<RocketPayload>(type, id);
+    //call get() method on instance of GetRocketSpeifics
+    rocketInfo.get().then((response) => {
+      //store data in state
+      setRocket({ status: 'loaded', payload: response });
+    });
   }, []);
 
   return (
