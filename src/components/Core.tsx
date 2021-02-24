@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 //import types
-import type { LaunchCoreInfo } from './types/LaunchCoreInfo';
-import type { CoreSpecificInfo } from './types/CoreSpecificInfo';
+import type { LaunchCoreInfo } from '../types/LaunchCoreInfo';
+import type { CoreSpecificInfo } from '../types/CoreSpecificInfo';
 
 //import classes
-import { GetLaunchComponents } from './classes/GetLaunchComponents';
+import { GetLaunchComponents } from '../classes/GetLaunchComponents';
 
 //Expected props from App.tsx
 interface Props {

@@ -5,9 +5,9 @@ import axios from 'axios';
 import './App.css';
 
 // Components
-import Rocket from './Rocket';
-import Core from './Core';
-import Fairing from './Fairing';
+import Rocket from './components/Rocket';
+import Core from './components/Core';
+import Fairing from './components/Fairing';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
