@@ -1,6 +1,18 @@
 // Imports
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import falcon1 from './assets/falcon1.svg';
+import falcon9v11a from './assets/falcon911a.svg';
+import falcon9v11b from './assets/falcon911b.svg';
+import falcon9v11c from './assets/falcon911c.svg';
+import falcon9v12a from './assets/falcon912a.svg';
+import falcon9v12b from './assets/falcon912b.svg';
+import falcon9v12c from './assets/falcon912c.svg';
+import falcon9block5a from './assets/falcon9block5a.svg';
+import falcon9block5b from './assets/falcon9block5b.svg';
+import falcon9block5c from './assets/falcon9block5c.svg';
+import falconheavy from './assets/falconheavy.svg';
+import falconheavyblock5 from './assets/falconheavyblock5.svg';
 
 import './App.css';
 
@@ -26,19 +38,21 @@ function App({}: AppProps) {
   useEffect(() => {
     axios
       .post('https://api.spacexdata.com/v4/launches/query', {
-        "query": {
-          "date_utc": {
-            "$lte": new Date()
-          }
-        },
-        "options": {
-          "sort": {
-            "date_utc": "desc",
+        query: {
+          date_utc: {
+            $lte: new Date(),
           },
-          "limit": 1000
-        }
+        },
+        options: {
+          sort: {
+            date_utc: 'desc',
+          },
+          limit: 1000,
+        },
       })
-      .then((response) => {setSlides(response.data.docs)})
+      .then((response) => {
+        setSlides(response.data.docs);
+      })
       .catch((error) => console.log('API error: ', error));
   }, []);
 
@@ -92,8 +106,51 @@ function App({}: AppProps) {
                       <div>Flight Number: {launch.flight_number}</div>
                       <div>Date: {launch.date_local}</div>
                       <div>Launch ID: {launch.id}</div>
-                      {launch.success && <div>Success: {launch.success.toString()}</div>}
-                      {launch.links.patch.large && <Image src={launch.links.patch.large} />}
+                      {launch.success && (
+                        <div>Success: {launch.success.toString()}</div>
+                      )}
+                      {launch.links.patch.large && (
+                        <Image src={launch.links.patch.large} />
+                      )}
+                      {/* Test Component for Rockets - Remove Me */}
+                      <div className="rocket-display">
+                        <div>
+                          <img src={falcon1}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9v11a}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9v11b}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9v11c}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9v12a}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9v12b}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9v12c}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9block5a}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9block5b}></img>
+                        </div>
+                        <div>
+                          <img src={falcon9block5c}></img>
+                        </div>
+                        <div>
+                          <img src={falconheavy}></img>
+                        </div>
+                        <div>
+                          <img src={falconheavyblock5}></img>
+                        </div>
+                      </div>
                     </Col>
                   </Row>
                 </Container>
