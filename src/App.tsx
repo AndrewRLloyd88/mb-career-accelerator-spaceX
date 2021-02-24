@@ -5,9 +5,9 @@ import axios from 'axios';
 import './App.css';
 
 // Components
-import Rocket from './Rocket';
-import Core from './Core';
-import Fairing from './Fairing';
+import Rocket from './components/Rocket';
+import Core from './components/Core';
+import Fairing from './components/Fairing';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -25,8 +25,20 @@ function App({}: AppProps) {
 
   useEffect(() => {
     axios
-      .get('https://api.spacexdata.com/v4/launches')
-      .then((response) => setSlides(response.data))
+      .post('https://api.spacexdata.com/v4/launches/query', {
+        "query": {
+          "date_utc": {
+            "$lte": new Date()
+          }
+        },
+        "options": {
+          "sort": {
+            "date_utc": "desc",
+          },
+          "limit": 1000
+        }
+      })
+      .then((response) => {setSlides(response.data.docs)})
       .catch((error) => console.log('API error: ', error));
   }, []);
 
@@ -45,7 +57,7 @@ function App({}: AppProps) {
             className="main-carousel"
             fade={true}
             indicators={false}
-            interval={10000}
+            interval={null}
           >
             {launchSlides.map((launch: any) => (
               <Carousel.Item key={launch.id}>
@@ -80,13 +92,8 @@ function App({}: AppProps) {
                       <div>Flight Number: {launch.flight_number}</div>
                       <div>Date: {launch.date_local}</div>
                       <div>Launch ID: {launch.id}</div>
-                      {/* <div>Success: {launch.success.toString()}</div> */}
-                      <div>
-                        Success:{' '}
-                        {launch.success === null
-                          ? 'Not available'
-                          : launch.success.toString()}
-                      </div>
+                      {launch.success && <div>Success: {launch.success.toString()}</div>}
+                      {launch.links.patch.large && <Image src={launch.links.patch.large} />}
                     </Col>
                   </Row>
                 </Container>
