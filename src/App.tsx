@@ -1,6 +1,8 @@
 // Imports
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
+// Import images
 import falcon1 from './assets/falcon1.svg';
 import falcon9v11a from './assets/falcon911a.svg';
 import falcon9v11b from './assets/falcon911b.svg';
@@ -15,6 +17,12 @@ import falconheavy from './assets/falconheavy.svg';
 import falconheavyblock5 from './assets/falconheavyblock5.svg';
 
 import './App.css';
+
+// Import types
+import type {
+  LaunchesArray,
+  LaunchObject
+} from './types/LaunchSpecificInfo';
 
 // Components
 import Rocket from './components/Rocket';
@@ -33,7 +41,10 @@ import Carousel from 'react-bootstrap/Carousel';
 interface AppProps {}
 
 function App({}: AppProps) {
-  const [launchSlides, setSlides] = useState([]);
+
+  // typeof launchSlides is expected to be array of LaunchObject's
+  // Then set launchSlides initial state to empty array
+  const [launchSlides, setSlides] = useState<LaunchObject[]>([]);
 
   useEffect(() => {
     axios
@@ -51,6 +62,7 @@ function App({}: AppProps) {
         },
       })
       .then((response) => {
+        console.log(response.data.docs);
         setSlides(response.data.docs);
       })
       .catch((error) => console.log('API error: ', error));
