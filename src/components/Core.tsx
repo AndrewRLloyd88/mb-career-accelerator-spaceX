@@ -39,11 +39,12 @@ const Core = (props: Props) => {
     thisCore && (
       <Accordion>
         <Card>
-          <Card.Header>
+          {/* Change Card.Header to div for more flexibility */}
+          <div className="accordion-header">
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
               Cores
             </Accordion.Toggle>
-          </Card.Header>
+          </div>
           <Accordion.Collapse eventKey="1">
             <Card.Body>
               <div>Block: {thisCore.block}</div>

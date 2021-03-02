@@ -46,11 +46,12 @@ const rocket = (props: Props) => {
       {service === 'loaded' && (
         <Accordion>
           <Card>
-            <Card.Header>
+            {/* Change Card.Header to div for more flexibility */}
+            <div className="accordion-header">
               <Accordion.Toggle as={Button} variant="link" eventKey="1">
                 Rocket Info
               </Accordion.Toggle>
-            </Card.Header>
+            </div>
             <Accordion.Collapse eventKey="1">
               <Card.Body>
                 <div>Name: {rocket.payload.name}</div>
