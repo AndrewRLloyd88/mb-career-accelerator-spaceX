@@ -38,9 +38,9 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 
-interface AppProps {}
+interface AppProps { }
 
-function App({}: AppProps) {
+function App({ }: AppProps) {
 
   // typeof launchSlides is expected to be array of LaunchObject's
   // Then set launchSlides initial state to empty array
@@ -74,7 +74,7 @@ function App({}: AppProps) {
       <Container fluid>
         {/* Header */}
         <Row>
-          <h1>SpaceXploration</h1>
+          <h1 className="app-name justify-content-center">SpaceXploration</h1>
         </Row>
 
         {/* Main Body and Carousel */}
@@ -90,24 +90,34 @@ function App({}: AppProps) {
                 <Container fluid>
                   <Row>
                     {/* Rocket Column */}
-                    <Col xs={12} md={7} className="rocket-container">
-                      {/* Fairings */}
-                      {launch.fairings && (
-                        <div>
-                          <Fairing fairingObj={launch.fairings} />
-                        </div>
-                      )}
-                      {/* Cores */}
-                      {/* Does a Core id exist for this flight? */}
-                      {launch.cores[0].core && (
-                        <Core coreObj={launch.cores[0]} />
-                      )}
-                      {/* Rocket */}
-                      <Image className="rocket-image" src="./images/Falcon_9_Block_5_landing.png" />
-                      <Rocket id={launch.rocket} />
+                    <Col xs={{ span: 12, order: 2 }} md={{ span: 7, order: 1 }} className="rocket-column">
+                      <Row>
+
+                        <Col xs={{ span: 12, order: 2 }} md={{ span: 9, order: 1 }}>
+                          {/* Fairings */}
+                          {launch.fairings && (
+                            <div>
+                              <Fairing fairingObj={launch.fairings} />
+                            </div>
+                          )}
+                          {/* Cores */}
+                          {/* Does a Core id exist for this flight? */}
+                          {launch.cores[0].core && (
+                            <Core coreObj={launch.cores[0]} />
+                          )}
+                          {/* Rocket */}
+                          <Rocket id={launch.rocket} />
+                        </Col>
+                        
+                        <Col xs={{ span: 12, order: 1 }} md={{ span: 3, order: 2 }}>
+                          <Image className="rocket-image" src="./images/Falcon_9_Block_5_landing.png" />
+                        </Col>
+                      
+                      </Row>
                     </Col>
+                    
                     {/* Launch Column */}
-                    <Col xs={12} md={5} className="launch-container">
+                    <Col xs={{ span: 12, order: 1 }} md={{ span: 5, order: 2 }} className="launch-column">
                       Launch
                       <div>Name: {launch.name}</div>
                       <div>Details: {launch.details}</div>
@@ -120,45 +130,6 @@ function App({}: AppProps) {
                       {launch.links.patch.large && (
                         <Image className="launch-patch" src={launch.links.patch.large} />
                       )}
-                      {/* Test Component for Rockets - Remove Me */}
-                      <div className="rocket-display">
-                        <div>
-                          <img src={falcon1}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9v11a}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9v11b}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9v11c}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9v12a}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9v12b}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9v12c}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9block5a}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9block5b}></img>
-                        </div>
-                        <div>
-                          <img src={falcon9block5c}></img>
-                        </div>
-                        <div>
-                          <img src={falconheavy}></img>
-                        </div>
-                        <div>
-                          <img src={falconheavyblock5}></img>
-                        </div>
-                      </div>
                     </Col>
                   </Row>
                 </Container>
