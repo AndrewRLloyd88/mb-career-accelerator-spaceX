@@ -19,11 +19,12 @@ const Fairing = (props: Props) => {
   return (
     <Accordion>
       <Card>
-        <Card.Header>
+        {/* Change Card.Header to div for more flexibility */}
+        <div className="accordion-header">
           <Accordion.Toggle as={Button} variant="link" eventKey="1">
             Fairings
           </Accordion.Toggle>
-        </Card.Header>
+        </div>
         <Accordion.Collapse eventKey="1">
           <Card.Body>
             <div>Reused: {reused ? 'Reused' : 'Not Reused'}</div>

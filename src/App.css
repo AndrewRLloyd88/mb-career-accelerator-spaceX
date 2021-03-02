@@ -1,5 +1,3 @@
-/* Layout */
-
 /* Override defaults */
 html,
 body,
@@ -13,23 +11,39 @@ body,
   box-sizing: border-box;
 }
 
-/* Branding / Styling */
 
+/* Custom properties */
+:root {
+  --text-light: #fff;
+  --bg-color-main: #090909;
+  --bg-color-secondary: #222222;
+}
+
+
+/* Branding / Styling */
 body {
   font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
-  color: white;
-  background-color: #282c34;
+  color: var(--text-light);
+  /* background-position: center; */
+  background-size: cover;
+  background-image: linear-gradient(var(--bg-color-main), var(--bg-color-secondary));
   text-align: center;
 }
 
-/* Global Elements */
+.app-name {
+  font-weight: 700;
+  text-align: center;
+}
 
 
-/* Custom Classes */
+/* Layout */
 
-.rocket-container,
-.launch-container {
-  padding: 3% 8%;
+.rocket-column {
+  padding: 3% 3% 3% 8%;
+}
+
+.launch-column {
+  padding: 3% 10% 3% 3%;
 }
 
 .main-carousel {
@@ -47,18 +61,41 @@ body {
 }
 
 .rocket-image {
-  max-height: 60vh;
+  max-height: 80vh;
 }
 
 .launch-patch {
   max-height: 20vh;
 }
 
+
+/* Accordion styles */
+
 .accordion {
   min-width: 100%;
+  border-style: none;
 }
 
 .accordion .card {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0);
+  margin-bottom: 1.5rem;
+  background-color: transparent;
+  border-style: none;
 }
+
+/* Override react-bootstrap styling */
+.btn-link {
+  color: var(--text-light); 
+}
+
+.btn-link:hover,
+.btn-link:active,
+.btn-link:visited {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.accordion-header {
+  border-bottom: 1px solid white;
+}
+

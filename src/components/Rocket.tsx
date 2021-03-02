@@ -18,7 +18,7 @@ import { GetLaunchComponents } from '../classes/GetLaunchComponents';
 //our expected props for this component
 interface Props {
   id: string;
-  setRocketName: () => void;
+  setRocketName: (rocketName: string) => void;
 }
 
 const rocket = (props: Props) => {
@@ -47,11 +47,12 @@ const rocket = (props: Props) => {
       {service === 'loaded' && (
         <Accordion>
           <Card>
-            <Card.Header>
+            {/* Change Card.Header to div for more flexibility */}
+            <div className="accordion-header">
               <Accordion.Toggle as={Button} variant="link" eventKey="1">
                 Rocket Info
               </Accordion.Toggle>
-            </Card.Header>
+            </div>
             <Accordion.Collapse eventKey="1">
               <Card.Body>
                 <div>Name: {rocket.payload.name}</div>
