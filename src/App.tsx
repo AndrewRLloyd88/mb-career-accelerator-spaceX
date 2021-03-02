@@ -42,6 +42,12 @@ function App({}: AppProps) {
   // typeof launchSlides is expected to be array of LaunchObject's
   // Then set launchSlides initial state to empty array
   const [launchSlides, setSlides] = useState<LaunchObject[]>([]);
+  const [rocketName, setRocketName] = useState('');
+
+  //utility function for rocketImage
+  const setName = (rocketName: string) => {
+    setRocketName(rocketName);
+  };
 
   useEffect(() => {
     axios
@@ -100,8 +106,11 @@ function App({}: AppProps) {
                         <Core coreObj={launch.cores[0]} />
                       )}
                       {/* Rocket */}
-                      <RocketImage name={launch.name} />
-                      <Rocket id={launch.rocket} />
+                      <RocketImage name={rocketName} />
+                      <Rocket
+                        id={launch.rocket}
+                        setRocketName={setRocketName}
+                      />
                     </Col>
                     {/* Launch Column */}
                     <Col xs={12} md={5} className="launch-container">

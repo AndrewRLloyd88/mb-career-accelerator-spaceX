@@ -18,6 +18,7 @@ import { GetLaunchComponents } from '../classes/GetLaunchComponents';
 //our expected props for this component
 interface Props {
   id: string;
+  setRocketName: () => void;
 }
 
 const rocket = (props: Props) => {
