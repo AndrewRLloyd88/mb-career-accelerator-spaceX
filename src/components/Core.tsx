@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+// import react-bootstrap components
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 //import types
 import type { LaunchCoreInfo } from '../types/LaunchCoreInfo';
 import type { CoreSpecificInfo } from '../types/CoreSpecificInfo';
@@ -32,26 +37,37 @@ const Core = (props: Props) => {
 
   return (
     thisCore && (
-      <div>
-        <div>Block: {thisCore.block}</div>
-        <div>Reuse Count:{thisCore.reuse_count}</div>
-        <div>RTLS Attempts: {thisCore.rtls_attempts}</div>
-        <div>RTLS Landings: {thisCore.rtls_landings}</div>
-        <div>ASDS Attempts:{thisCore.asds_attempts}</div>
-        <div>ASDS Landings: {thisCore.asds_landings}</div>
-        <div>Last Update:{thisCore.last_update}</div>
-        {thisCore.launches && (
-          <div>
-            <p>Launches:</p>
-            {thisCore.launches.map((launch) => {
-              return <div>{launch}</div>;
-            })}
-          </div>
-        )}
-        <div>Serial: {thisCore.serial}</div>
-        <div>Status: {thisCore.status}</div>
-        <div>ID: {thisCore.id}</div>
-      </div>
+      <Accordion>
+        <Card>
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+              Cores
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="1">
+            <Card.Body>
+              <div>Block: {thisCore.block}</div>
+              <div>Reuse Count: {thisCore.reuse_count}</div>
+              <div>RTLS Attempts: {thisCore.rtls_attempts}</div>
+              <div>RTLS Landings: {thisCore.rtls_landings}</div>
+              <div>ASDS Attempts: {thisCore.asds_attempts}</div>
+              <div>ASDS Landings: {thisCore.asds_landings}</div>
+              <div>Last Update: {thisCore.last_update}</div>
+              {thisCore.launches && (
+                <div>
+                  <p>Launches:</p>
+                  {thisCore.launches.map((launch) => {
+                    return <div>{launch}</div>;
+                  })}
+                </div>
+              )}
+              <div>Serial: {thisCore.serial}</div>
+              <div>Status: {thisCore.status}</div>
+              <div>ID: {thisCore.id}</div>
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
     )
   );
 };

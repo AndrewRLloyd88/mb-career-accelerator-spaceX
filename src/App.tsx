@@ -90,28 +90,24 @@ function App({}: AppProps) {
                 <Container fluid>
                   <Row>
                     {/* Rocket Column */}
-                    <Col xs={12} md={6} className="rocket-container">
-                      Rocket
-                      <Image src="./images/Falcon_9_Block_5_landing.png" />
-                      <Rocket id={launch.rocket} />
-                      {/* Cores */}
-                      {/* Does a Core id exist for this flight? */}
-                      {launch.cores[0].core && (
-                        <Row>
-                          Cores
-                          <Core coreObj={launch.cores[0]} />
-                        </Row>
-                      )}
+                    <Col xs={12} md={7} className="rocket-container">
                       {/* Fairings */}
                       {launch.fairings && (
                         <div>
-                          <p>Fairings:</p>
                           <Fairing fairingObj={launch.fairings} />
                         </div>
                       )}
+                      {/* Cores */}
+                      {/* Does a Core id exist for this flight? */}
+                      {launch.cores[0].core && (
+                        <Core coreObj={launch.cores[0]} />
+                      )}
+                      {/* Rocket */}
+                      <Image className="rocket-image" src="./images/Falcon_9_Block_5_landing.png" />
+                      <Rocket id={launch.rocket} />
                     </Col>
                     {/* Launch Column */}
-                    <Col xs={12} md={6} className="launch-container">
+                    <Col xs={12} md={5} className="launch-container">
                       Launch
                       <div>Name: {launch.name}</div>
                       <div>Details: {launch.details}</div>
@@ -122,7 +118,7 @@ function App({}: AppProps) {
                         <div>Success: {launch.success.toString()}</div>
                       )}
                       {launch.links.patch.large && (
-                        <Image src={launch.links.patch.large} />
+                        <Image className="launch-patch" src={launch.links.patch.large} />
                       )}
                       {/* Test Component for Rockets - Remove Me */}
                       <div className="rocket-display">
