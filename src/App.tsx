@@ -19,15 +19,13 @@ import falconheavyblock5 from './assets/falconheavyblock5.svg';
 import './App.css';
 
 // Import types
-import type {
-  LaunchesArray,
-  LaunchObject
-} from './types/LaunchSpecificInfo';
+import type { LaunchesArray, LaunchObject } from './types/LaunchSpecificInfo';
 
 // Components
 import Rocket from './components/Rocket';
 import Core from './components/Core';
 import Fairing from './components/Fairing';
+import RocketImage from './components/RocketImage';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -41,7 +39,6 @@ import Carousel from 'react-bootstrap/Carousel';
 interface AppProps {}
 
 function App({}: AppProps) {
-
   // typeof launchSlides is expected to be array of LaunchObject's
   // Then set launchSlides initial state to empty array
   const [launchSlides, setSlides] = useState<LaunchObject[]>([]);
@@ -103,7 +100,7 @@ function App({}: AppProps) {
                         <Core coreObj={launch.cores[0]} />
                       )}
                       {/* Rocket */}
-                      <Image className="rocket-image" src="./images/Falcon_9_Block_5_landing.png" />
+                      <RocketImage name={launch.name} />
                       <Rocket id={launch.rocket} />
                     </Col>
                     {/* Launch Column */}
@@ -118,7 +115,10 @@ function App({}: AppProps) {
                         <div>Success: {launch.success.toString()}</div>
                       )}
                       {launch.links.patch.large && (
-                        <Image className="launch-patch" src={launch.links.patch.large} />
+                        <Image
+                          className="launch-patch"
+                          src={launch.links.patch.large}
+                        />
                       )}
                       {/* Test Component for Rockets - Remove Me */}
                       <div className="rocket-display">
