@@ -31,11 +31,11 @@ const Fairing = (props: Props) => {
             <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
             <div>
               {/* Eventually Cross Reference This Data with Ship Name/Info */}
-              {ships.map((ship) => {
+              {ships.map((ship, id) => {
                 return (
-                  <div>
+                  <div key={id + 0}>
                     Ships:
-                    <p>{ship}</p>
+                    <p key={id + ship}>{ship}</p>
                   </div>
                 );
               })}

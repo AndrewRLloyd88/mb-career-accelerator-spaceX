@@ -56,8 +56,8 @@ const Core = (props: Props) => {
               {thisCore.launches && (
                 <div>
                   <p>Launches:</p>
-                  {thisCore.launches.map((launch) => {
-                    return <div>{launch}</div>;
+                  {thisCore.launches.map((launch, id) => {
+                    return <div key={id}>{launch}</div>;
                   })}
                 </div>
               )}
