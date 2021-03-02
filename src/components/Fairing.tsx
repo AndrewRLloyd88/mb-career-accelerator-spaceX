@@ -1,5 +1,10 @@
 import React from 'react';
 
+// import react-bootstrap components
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 interface Props {
   fairingObj: {
     reused: false;
@@ -12,22 +17,33 @@ interface Props {
 const Fairing = (props: Props) => {
   const { reused, recovery_attempt, recovered, ships } = props.fairingObj;
   return (
-    <div>
-      <div>Reused: {reused ? 'Reused' : 'Not Reused'}</div>
-      <div>Recovery Attempt: {recovery_attempt ? 'Yes' : 'No'}</div>
-      <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
-      <div>
-        {/* Eventually Cross Reference This Data with Ship Name/Info */}
-        {ships.map((ship) => {
-          return (
+    <Accordion>
+      <Card>
+        <Card.Header>
+          <Accordion.Toggle as={Button} variant="link" eventKey="1">
+            Fairings
+          </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey="1">
+          <Card.Body>
+            <div>Reused: {reused ? 'Reused' : 'Not Reused'}</div>
+            <div>Recovery Attempt: {recovery_attempt ? 'Yes' : 'No'}</div>
+            <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
             <div>
-              Ships:
-              <p>{ship}</p>
+              {/* Eventually Cross Reference This Data with Ship Name/Info */}
+              {ships.map((ship) => {
+                return (
+                  <div>
+                    Ships:
+                    <p>{ship}</p>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
   );
 };
 
