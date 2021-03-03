@@ -2,32 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Import images
-import falcon1 from './assets/falcon1.svg';
-import falcon9v11a from './assets/falcon911a.svg';
-import falcon9v11b from './assets/falcon911b.svg';
-import falcon9v11c from './assets/falcon911c.svg';
-import falcon9v12a from './assets/falcon912a.svg';
-import falcon9v12b from './assets/falcon912b.svg';
-import falcon9v12c from './assets/falcon912c.svg';
-import falcon9block5a from './assets/falcon9block5a.svg';
-import falcon9block5b from './assets/falcon9block5b.svg';
-import falcon9block5c from './assets/falcon9block5c.svg';
-import falconheavy from './assets/falconheavy.svg';
-import falconheavyblock5 from './assets/falconheavyblock5.svg';
-
 import './App.css';
 
 // Import types
-import type {
-  LaunchesArray,
-  LaunchObject
-} from './types/LaunchSpecificInfo';
+import type { LaunchesArray, LaunchObject } from './types/LaunchSpecificInfo';
 
 // Components
 import Rocket from './components/Rocket';
 import Core from './components/Core';
 import Fairing from './components/Fairing';
+import RocketImage from './components/RocketImage';
 
 // React-Bootstrap Layout components
 import Container from 'react-bootstrap/Container';
@@ -38,10 +22,9 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 
-interface AppProps { }
+interface AppProps {}
 
-function App({ }: AppProps) {
-
+function App({}: AppProps) {
   // typeof launchSlides is expected to be array of LaunchObject's
   // Then set launchSlides initial state to empty array
   const [launchSlides, setSlides] = useState<LaunchObject[]>([]);
@@ -54,7 +37,16 @@ function App({ }: AppProps) {
             $lte: new Date(),
           },
         },
+        //options needed for images
         options: {
+          populate: [
+            {
+              path: 'rocket',
+              select: {
+                name: 1,
+              },
+            },
+          ],
           sort: {
             date_utc: 'desc',
           },
@@ -62,7 +54,7 @@ function App({ }: AppProps) {
         },
       })
       .then((response) => {
-        console.log(response.data.docs);
+        // console.log(response.data.docs);
         setSlides(response.data.docs);
       })
       .catch((error) => console.log('API error: ', error));
@@ -85,15 +77,21 @@ function App({ }: AppProps) {
             indicators={false}
             interval={null}
           >
-            {launchSlides.map((launch: any) => (
+            {launchSlides.map((launch: any, idx) => (
               <Carousel.Item key={launch.id}>
                 <Container fluid>
                   <Row>
                     {/* Rocket Column */}
-                    <Col xs={{ span: 12, order: 2 }} md={{ span: 7, order: 1 }} className="rocket-column">
+                    <Col
+                      xs={{ span: 12, order: 2 }}
+                      md={{ span: 7, order: 1 }}
+                      className="rocket-column"
+                    >
                       <Row>
-
-                        <Col xs={{ span: 12, order: 2 }} md={{ span: 9, order: 1 }}>
+                        <Col
+                          xs={{ span: 12, order: 2 }}
+                          md={{ span: 9, order: 1 }}
+                        >
                           {/* Fairings */}
                           {launch.fairings && (
                             <div>
@@ -106,18 +104,25 @@ function App({ }: AppProps) {
                             <Core coreObj={launch.cores[0]} />
                           )}
                           {/* Rocket */}
-                          <Rocket id={launch.rocket} />
+                          <Rocket id={launch.rocket.id} />
                         </Col>
-                        
-                        <Col xs={{ span: 12, order: 1 }} md={{ span: 3, order: 2 }}>
-                          <Image className="rocket-image" src="./images/Falcon_9_Block_5_landing.png" />
+
+                        <Col
+                          xs={{ span: 12, order: 1 }}
+                          md={{ span: 3, order: 2 }}
+                        >
+                          {/* Rocket Image */}
+                          <RocketImage rocketName={launch.rocket.name} />
                         </Col>
-                      
                       </Row>
                     </Col>
-                    
+
                     {/* Launch Column */}
-                    <Col xs={{ span: 12, order: 1 }} md={{ span: 5, order: 2 }} className="launch-column">
+                    <Col
+                      xs={{ span: 12, order: 1 }}
+                      md={{ span: 5, order: 2 }}
+                      className="launch-column"
+                    >
                       Launch
                       <div>Name: {launch.name}</div>
                       <div>Details: {launch.details}</div>
@@ -128,7 +133,10 @@ function App({ }: AppProps) {
                         <div>Success: {launch.success.toString()}</div>
                       )}
                       {launch.links.patch.large && (
-                        <Image className="launch-patch" src={launch.links.patch.large} />
+                        <Image
+                          className="launch-patch"
+                          src={launch.links.patch.large}
+                        />
                       )}
                     </Col>
                   </Row>
