@@ -130,7 +130,9 @@ function App({}: AppProps) {
                         <div>Name: {launch.name}</div>
                         <div>Details: {launch.details}</div>
                         <div>Flight Number: {launch.flight_number}</div>
-                        <div>Date: {launch.date_local}</div>
+                        <div>
+                          Date: {new Date(launch.date_local).toUTCString()}
+                        </div>
                         <div>Launch ID: {launch.id}</div>
                         {launch.success && (
                           <div>Success: {launch.success.toString()}</div>
