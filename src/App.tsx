@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './App.css';
+import './Spinner.css';
 
 // Import types
 import type { LaunchesArray, LaunchObject } from './types/LaunchSpecificInfo';
@@ -21,6 +22,7 @@ import Col from 'react-bootstrap/Col';
 // React-Bootstrap Components
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
+import Spinner from './components/Spinner';
 
 interface AppProps {}
 
@@ -70,81 +72,95 @@ function App({}: AppProps) {
         </Row>
 
         {/* Main Body and Carousel */}
-        <Row>
-          <Carousel
-            className="main-carousel"
-            fade={true}
-            indicators={false}
-            interval={null}
-          >
-            {launchSlides.map((launch: any, idx) => (
-              <Carousel.Item key={launch.id}>
-                <Container fluid>
-                  <Row>
-                    {/* Rocket Column */}
-                    <Col
-                      xs={{ span: 12, order: 2 }}
-                      md={{ span: 7, order: 1 }}
-                      className="rocket-column"
-                    >
-                      <Row>
-                        <Col
-                          xs={{ span: 12, order: 2 }}
-                          md={{ span: 9, order: 1 }}
-                        >
-                          {/* Fairings */}
-                          {launch.fairings && (
-                            <div>
-                              <Fairing fairingObj={launch.fairings} />
-                            </div>
-                          )}
-                          {/* Cores */}
-                          {/* Does a Core id exist for this flight? */}
-                          {launch.cores[0].core && (
-                            <Core coreObj={launch.cores[0]} />
-                          )}
-                          {/* Rocket */}
-                          <Rocket id={launch.rocket.id} />
-                        </Col>
+        {launchSlides.length !== 0 ? (
+          <Row>
+            <Carousel
+              className="main-carousel"
+              fade={true}
+              indicators={false}
+              interval={null}
+            >
+              {launchSlides.map((launch: any, idx) => (
+                <Carousel.Item key={launch.id}>
+                  <Container fluid>
+                    <Row>
+                      {/* Rocket Column */}
+                      <Col
+                        xs={{ span: 12, order: 2 }}
+                        md={{ span: 7, order: 1 }}
+                        className="rocket-column"
+                      >
+                        <Row>
+                          <Col
+                            xs={{ span: 12, order: 2 }}
+                            md={{ span: 9, order: 1 }}
+                          >
+                            {/* Fairings */}
+                            {launch.fairings && (
+                              <div>
+                                <Fairing fairingObj={launch.fairings} />
+                              </div>
+                            )}
+                            {/* Cores */}
+                            {/* Does a Core id exist for this flight? */}
+                            {launch.cores[0].core && (
+                              <Core coreObj={launch.cores[0]} />
+                            )}
+                            {/* Rocket */}
+                            <Rocket id={launch.rocket.id} />
+                          </Col>
 
-                        <Col
-                          xs={{ span: 12, order: 1 }}
-                          md={{ span: 3, order: 2 }}
-                        >
-                          {/* Rocket Image */}
-                          <RocketImage rocketName={launch.rocket.name} />
-                        </Col>
-                      </Row>
-                    </Col>
+                          <Col
+                            xs={{ span: 12, order: 1 }}
+                            md={{ span: 3, order: 2 }}
+                          >
+                            {/* Rocket Image */}
+                            <RocketImage rocketName={launch.rocket.name} />
+                          </Col>
+                        </Row>
+                      </Col>
 
-                    {/* Launch Column */}
-                    <Col
-                      xs={{ span: 12, order: 1 }}
-                      md={{ span: 5, order: 2 }}
-                      className="launch-column"
-                    >
-                      Launch
-                      <div>Name: {launch.name}</div>
-                      <div>Details: {launch.details}</div>
-                      <div>Flight Number: {launch.flight_number}</div>
-                      <div>Date: {launch.date_local}</div>
-                      <div>Launch ID: {launch.id}</div>
-                      {launch.success && (
-                        <div>Success: {launch.success.toString()}</div>
-                      )}
-                      {launch.links.patch.large && (
-                        <Image
-                          className="launch-patch"
-                          src={launch.links.patch.large}
-                        />
-                      )}
-                    </Col>
-                  </Row>
-                </Container>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Row>
+                      {/* Launch Column */}
+                      <Col
+                        xs={{ span: 12, order: 1 }}
+                        md={{ span: 5, order: 2 }}
+                        className="launch-column"
+                      >
+                        Launch
+                        <div>Name: {launch.name}</div>
+                        <div>Details: {launch.details}</div>
+                        <div>Flight Number: {launch.flight_number}</div>
+                        <div>Date: {launch.date_local}</div>
+                        <div>Launch ID: {launch.id}</div>
+                        {launch.success && (
+                          <div>Success: {launch.success.toString()}</div>
+                        )}
+                        {launch.links.patch.large && (
+                          <Image
+                            className="launch-patch"
+                            src={launch.links.patch.large}
+                          />
+                        )}
+                      </Col>
+                    </Row>
+                  </Container>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Row>
+        ) : (
+          <Row>
+            <Carousel
+              className="main-carousel"
+              fade={true}
+              indicators={false}
+              interval={null}
+            >
+              <h1>LOADING...</h1>
+              <Spinner />
+            </Carousel>
+          </Row>
+        )}
       </Container>
     </div>
   );
