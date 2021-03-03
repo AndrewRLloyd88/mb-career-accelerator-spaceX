@@ -42,12 +42,6 @@ function App({}: AppProps) {
   // typeof launchSlides is expected to be array of LaunchObject's
   // Then set launchSlides initial state to empty array
   const [launchSlides, setSlides] = useState<LaunchObject[]>([]);
-  const [rocketName, setRocketName] = useState('');
-
-  //utility function for rocketImage
-  const setCurRocketName = (rocketName: string) => {
-    setRocketName(rocketName);
-  };
 
   useEffect(() => {
     axios
@@ -58,6 +52,14 @@ function App({}: AppProps) {
           },
         },
         options: {
+          populate: [
+            {
+              path: 'rocket',
+              select: {
+                name: 1,
+              },
+            },
+          ],
           sort: {
             date_utc: 'desc',
           },
@@ -88,7 +90,7 @@ function App({}: AppProps) {
             indicators={false}
             interval={null}
           >
-            {launchSlides.map((launch: any) => (
+            {launchSlides.map((launch: any, idx) => (
               <Carousel.Item key={launch.id}>
                 <Container fluid>
                   <Row>
@@ -115,20 +117,14 @@ function App({}: AppProps) {
                             <Core coreObj={launch.cores[0]} />
                           )}
                           {/* Rocket */}
-                          <Rocket
-                            id={launch.rocket}
-                            setRocketName={setCurRocketName}
-                          />
+                          <Rocket id={launch.rocket.id} />
                         </Col>
 
                         <Col
                           xs={{ span: 12, order: 1 }}
                           md={{ span: 3, order: 2 }}
                         >
-                          <Image
-                            className="rocket-image"
-                            src="./images/Falcon_9_Block_5_landing.png"
-                          />
+                          <RocketImage rocketName={launch.rocket.name} />
                         </Col>
                       </Row>
                     </Col>
