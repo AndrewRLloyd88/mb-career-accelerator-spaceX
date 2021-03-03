@@ -131,7 +131,7 @@ function App({}: AppProps) {
                         <div>Details: {launch.details}</div>
                         <div>Flight Number: {launch.flight_number}</div>
                         <div>
-                          Date: {new Date(launch.date_local).toUTCString()}
+                          Date: {new Date(launch.date_local).toDateString()}
                         </div>
                         <div>Launch ID: {launch.id}</div>
                         {launch.success && (
