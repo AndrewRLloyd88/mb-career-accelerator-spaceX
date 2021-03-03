@@ -1,5 +1,30 @@
+import type { LaunchCoreInfo } from './LaunchCoreInfo';
+
 export interface LaunchesArray {
   [index: string]: LaunchObject;
+}
+
+export interface Cores {
+  [index: string]: LaunchCoreInfo;
+}
+
+interface Fairings {
+  reused: false;
+  recovery_attempt: true;
+  recovered: false;
+  ships: string[];
+}
+
+interface Rocket {
+  name: string;
+  id: string;
+}
+
+interface Links {
+  patch: {
+    small: string;
+    large: string;
+  };
 }
 
 export interface LaunchObject {
@@ -10,4 +35,8 @@ export interface LaunchObject {
   id: string;
   success: boolean;
   large: string;
+  fairings: Fairings;
+  rocket: Rocket;
+  cores: Cores;
+  links: Links;
 }

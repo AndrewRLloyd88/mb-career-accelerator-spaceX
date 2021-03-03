@@ -80,7 +80,7 @@ function App({}: AppProps) {
               indicators={false}
               interval={null}
             >
-              {launchSlides.map((launch: any, idx) => (
+              {launchSlides.map((launch: LaunchObject, idx) => (
                 <Carousel.Item key={launch.id}>
                   <Container fluid>
                     <Row>
