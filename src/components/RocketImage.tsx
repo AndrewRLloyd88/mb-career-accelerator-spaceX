@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 // Import images
 import falcon1 from '../assets/falcon1.svg';
@@ -23,7 +22,6 @@ const RocketImage = (props: Props) => {
   const [image, setImage] = useState('');
 
   const setPicture = (rocketName: string) => {
-    console.log(rocketName);
     switch (rocketName) {
       case 'Falcon 1':
         return setImage(falcon1);
