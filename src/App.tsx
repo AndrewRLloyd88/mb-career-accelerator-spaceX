@@ -115,7 +115,10 @@ function App({}: AppProps) {
                             md={{ span: 3, order: 2 }}
                           >
                             {/* Rocket Image */}
-                            <RocketImage rocketName={launch.rocket.name} />
+                            <RocketImage
+                              rocketName={launch.rocket.name}
+                              flightNumber={launch.flight_number}
+                            />
                           </Col>
                         </Row>
                       </Col>
