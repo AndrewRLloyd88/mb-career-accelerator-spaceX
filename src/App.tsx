@@ -115,7 +115,10 @@ function App({}: AppProps) {
                             md={{ span: 3, order: 2 }}
                           >
                             {/* Rocket Image */}
-                            <RocketImage rocketName={launch.rocket.name} />
+                            <RocketImage
+                              rocketName={launch.rocket.name}
+                              flightNumber={launch.flight_number}
+                            />
                           </Col>
                         </Row>
                       </Col>
@@ -128,12 +131,12 @@ function App({}: AppProps) {
                       >
                         Launch
                         <div>Name: {launch.name}</div>
-                        <div>Details: {launch.details}</div>
+                        {launch.details && <div>Details: {launch.details}</div>}
                         <div>Flight Number: {launch.flight_number}</div>
                         <div>
                           Date: {new Date(launch.date_local).toDateString()}
                         </div>
-                        <div>Launch ID: {launch.id}</div>
+                        {/*<div>Launch ID: {launch.id}</div>*/}
                         {launch.success && (
                           <div>Success: {launch.success.toString()}</div>
                         )}

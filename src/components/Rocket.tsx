@@ -56,17 +56,30 @@ const rocket = (props: Props) => {
               <Card.Body>
                 <div>Name: {rocket.payload.name}</div>
                 <div>Type: {rocket.payload.type}</div>
-                <div>Active: {rocket.payload.active}</div>
+                <div>
+                  Active: {rocket.payload.active ? 'Active' : 'Inactive'}
+                </div>
                 <div>Stages: {rocket.payload.stages}</div>
                 <div>Boosters: {rocket.payload.boosters}</div>
-                <div>Cost Per Launch: {rocket.payload.cost_per_launch}</div>
-                <div>Success Rate: {rocket.payload.success_rate_pct}</div>
+                <div>
+                  Cost Per Launch:{' '}
+                  {rocket.payload.cost_per_launch.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  })}
+                </div>
+                <div>Success Rate: {rocket.payload.success_rate_pct}%</div>
                 <div>First Flight: {rocket.payload.first_flight}</div>
                 <div>Country: {rocket.payload.country}</div>
                 <div>Company: {rocket.payload.company}</div>
-                <div>Wikipedia Information: {rocket.payload.wikipedia}</div>
+                <div>
+                  Wikipedia Information:{' '}
+                  <a href={rocket.payload.wikipedia}>
+                    {rocket.payload.wikipedia}
+                  </a>
+                </div>
                 <div>Payload Description: {rocket.payload.description}</div>
-                <div>Payload ID: {rocket.payload.id}</div>
+                {/* <div>Payload ID: {rocket.payload.id}</div>*/}
               </Card.Body>
             </Accordion.Collapse>
           </Card>

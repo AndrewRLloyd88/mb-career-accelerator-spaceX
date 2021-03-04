@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 // Import images
 import falcon1 from '../assets/falcon1.svg';
+import falcon910 from '../assets/falcon9v1.svg';
 import falcon9v11a from '../assets/falcon911a.svg';
 import falcon9v11b from '../assets/falcon911b.svg';
 import falcon9v11c from '../assets/falcon911c.svg';
@@ -16,21 +17,36 @@ import falconheavyblock5 from '../assets/falconheavyblock5.svg';
 
 interface Props {
   rocketName: string;
+  flightNumber: number;
 }
 
 const RocketImage = (props: Props) => {
   const [image, setImage] = useState('');
 
-  const setPicture = (rocketName: string) => {
+  const setPicture = (rocketName: string, flightNumber: number) => {
     switch (rocketName) {
       case 'Falcon 1':
         return setImage(falcon1);
 
       case 'Falcon 9':
-        return setImage(falcon9v11b);
+        if (flightNumber === 61) {
+          return setImage(falcon9block5a);
+        } else if (flightNumber < 11) {
+          return setImage(falcon910);
+        } else if (flightNumber >= 11 && flightNumber < 27) {
+          return setImage(falcon9v11a);
+        } else if (flightNumber >= 27 && flightNumber < 65) {
+          return setImage(falcon9v12a);
+        } else if (flightNumber >= 65) {
+          return setImage(falcon9block5a);
+        }
 
       case 'Falcon Heavy':
-        return setImage(falconheavy);
+        if (flightNumber < 77) {
+          return setImage(falconheavy);
+        } else {
+          return setImage(falconheavyblock5);
+        }
 
       default:
         break;
@@ -38,7 +54,7 @@ const RocketImage = (props: Props) => {
   };
 
   useEffect(() => {
-    setPicture(props.rocketName);
+    setPicture(props.rocketName, props.flightNumber);
   }, []);
 
   return (
