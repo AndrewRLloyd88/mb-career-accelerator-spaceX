@@ -26,9 +26,9 @@ const Ship = (props: Props) => {
   }, []);
 
   return (
-    <p>
+    <div>
       Ship Name: <a href={ship.link}>{ship.name}</a>
-    </p>
+    </div>
   );
 };
 

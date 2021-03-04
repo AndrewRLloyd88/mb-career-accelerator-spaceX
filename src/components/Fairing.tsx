@@ -31,13 +31,14 @@ const Fairing = (props: Props) => {
             <div>Reused: {reused ? 'Reused' : 'Not Reused'}</div>
             <div>Recovery Attempt: {recovery_attempt ? 'Yes' : 'No'}</div>
             <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
-            <div>
-              {/* Eventually Cross Reference This Data with Ship Name/Info */}
-              Fairing Recovery Ships:
-              {ships.map((ship, id) => {
-                return <Ship key={id} ship={ship} />;
-              })}
-            </div>
+            {ships.length !== 0 && (
+              <div>
+                Fairing Recovery Ships:
+                {ships.map((ship, id) => {
+                  return <Ship key={id} ship={ship} />;
+                })}
+              </div>
+            )}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
