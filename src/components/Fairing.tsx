@@ -4,6 +4,7 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Ship from './Ship';
 
 interface Props {
   fairingObj: {
@@ -32,13 +33,9 @@ const Fairing = (props: Props) => {
             <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
             <div>
               {/* Eventually Cross Reference This Data with Ship Name/Info */}
+              Fairing Recovery Ships:
               {ships.map((ship, id) => {
-                return (
-                  <div key={id + 0}>
-                    Ships:
-                    <p key={id + ship}>{ship}</p>
-                  </div>
-                );
+                return <Ship key={id} ship={ship} />;
               })}
             </div>
           </Card.Body>
