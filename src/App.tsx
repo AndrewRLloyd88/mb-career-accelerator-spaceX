@@ -80,7 +80,7 @@ function App({}: AppProps) {
               indicators={false}
               interval={null}
             >
-              {launchSlides.map((launch: any, idx) => (
+              {launchSlides.map((launch: LaunchObject, idx) => (
                 <Carousel.Item key={launch.id}>
                   <Container fluid>
                     <Row>
@@ -130,7 +130,9 @@ function App({}: AppProps) {
                         <div>Name: {launch.name}</div>
                         <div>Details: {launch.details}</div>
                         <div>Flight Number: {launch.flight_number}</div>
-                        <div>Date: {launch.date_local}</div>
+                        <div>
+                          Date: {new Date(launch.date_local).toDateString()}
+                        </div>
                         <div>Launch ID: {launch.id}</div>
                         {launch.success && (
                           <div>Success: {launch.success.toString()}</div>
