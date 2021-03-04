@@ -36,7 +36,7 @@ const RocketImage = (props: Props) => {
         } else if (flightNumber >= 11 && flightNumber < 27) {
           return setImage(falcon9v11a);
         } else if (flightNumber >= 27 && flightNumber < 65) {
-          return setImage(falcon9v11a);
+          return setImage(falcon9v12a);
         } else if (flightNumber >= 65) {
           return setImage(falcon9block5a);
         }
