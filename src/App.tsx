@@ -136,7 +136,7 @@ function App({}: AppProps) {
                         <div>
                           Date: {new Date(launch.date_local).toDateString()}
                         </div>
-                        <div>Launch ID: {launch.id}</div>
+                        {/*<div>Launch ID: {launch.id}</div>*/}
                         {launch.success && (
                           <div>Success: {launch.success.toString()}</div>
                         )}
