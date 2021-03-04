@@ -131,7 +131,7 @@ function App({}: AppProps) {
                       >
                         Launch
                         <div>Name: {launch.name}</div>
-                        <div>Details: {launch.details}</div>
+                        {launch.details && <div>Details: {launch.details}</div>}
                         <div>Flight Number: {launch.flight_number}</div>
                         <div>
                           Date: {new Date(launch.date_local).toDateString()}
