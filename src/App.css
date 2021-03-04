@@ -4,6 +4,7 @@ body,
 .col {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 /* Include border and padding in element width and height */
@@ -21,6 +22,7 @@ body,
 
 
 /* Branding / Styling */
+
 body {
   font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
   color: var(--text-light);
@@ -32,7 +34,7 @@ body {
 
 .app-name {
   font-weight: 700;
-  text-align: center;
+  margin: 3vh auto 2vh;
 }
 
 
