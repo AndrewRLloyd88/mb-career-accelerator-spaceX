@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Ship from './Ship';
+import Table from 'react-bootstrap/Table';
 
 interface Props {
   fairingObj: {
@@ -28,17 +29,30 @@ const Fairing = (props: Props) => {
         </div>
         <Accordion.Collapse eventKey="1">
           <Card.Body>
-            <div>Reused: {reused ? 'Reused' : 'Not Reused'}</div>
-            <div>Recovery Attempt: {recovery_attempt ? 'Yes' : 'No'}</div>
-            <div>Recovered: {recovered ? 'Yes' : 'No'}</div>
-            {ships.length !== 0 && (
-              <div>
-                Fairing Recovery Ships:
-                {ships.map((ship, id) => {
-                  return <Ship key={id} ship={ship} />;
-                })}
-              </div>
-            )}
+            <Table>
+              <tr>
+                <td className="data-label">Reused:</td>
+                <td className="data-value">{reused ? 'Reused' : 'Not Reused'}</td>
+              </tr>
+              <tr>
+                <td className="data-label">Recovery Attempt:</td>
+                <td className="data-value">{recovery_attempt ? 'Yes' : 'No'}</td>
+              </tr>
+              <tr>
+                <td className="data-label">Recovered:</td>
+                <td className="data-value">{recovered ? 'Yes' : 'No'}</td>
+              </tr>
+              {ships.length !== 0 && (
+                <tr>
+                  <td className="data-label">Fairing Recovery Ships:</td>
+                  <td className="data-value">
+                    {ships.map((ship, id) => {
+                      return <Ship key={id} ship={ship} />;
+                    })}
+                  </td>
+                </tr>
+              )}
+            </Table>
           </Card.Body>
         </Accordion.Collapse>
       </Card>
