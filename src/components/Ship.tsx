@@ -25,7 +25,11 @@ const Ship = (props: Props) => {
     });
   }, []);
 
-  return <p>Ship Name: {ship.name}</p>;
+  return (
+    <p>
+      Ship Name: <a href={ship.link}>{ship.name}</a>
+    </p>
+  );
 };
 
 export default Ship;
