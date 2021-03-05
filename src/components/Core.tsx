@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 //import types
 import type { LaunchCoreInfo } from '../types/LaunchCoreInfo';
@@ -47,24 +48,58 @@ const Core = (props: Props) => {
           </div>
           <Accordion.Collapse eventKey="1">
             <Card.Body>
-              <div>Block: {thisCore.block}</div>
-              <div>Reuse Count: {thisCore.reuse_count}</div>
-              <div>RTLS Attempts: {thisCore.rtls_attempts}</div>
-              <div>RTLS Landings: {thisCore.rtls_landings}</div>
-              <div>ASDS Attempts: {thisCore.asds_attempts}</div>
-              <div>ASDS Landings: {thisCore.asds_landings}</div>
-              <div>Last Update: {thisCore.last_update}</div>
-              {thisCore.launches && (
-                <div>
-                  <p>Launches:</p>
-                  {thisCore.launches.map((launch, id) => {
-                    return <div key={id}>{launch}</div>;
-                  })}
-                </div>
-              )}
-              <div>Serial: {thisCore.serial}</div>
-              <div>Status: {thisCore.status}</div>
-              <div>ID: {thisCore.id}</div>
+              <Table>
+                <tr>
+                  <td className="data-label">Serial:</td>
+                  <td className="data-value">{thisCore.serial}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Status:</td>
+                  <td className="data-value">{thisCore.status}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Block:</td>
+                  <td className="data-value">{thisCore.block}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Last Update:</td>
+                  <td className="data-value">{thisCore.last_update}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Reuse Count:</td>
+                  <td className="data-value">{thisCore.reuse_count}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Return to Launch Site (RTLS) Attempts:</td>
+                  <td className="data-value">{thisCore.rtls_attempts}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Return to Launch Site (RTLS) Landings:</td>
+                  <td className="data-value">{thisCore.rtls_landings}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Autonomous Spaceport Drone Ship (ASDS) Landings:</td>
+                  <td className="data-value">{thisCore.asds_landings}</td>
+                </tr>
+                <tr>
+                  <td className="data-label">Autonomous Spaceport Drone Ship (ASDS) Attempts:</td>
+                  <td className="data-value">{thisCore.asds_attempts}</td>
+                </tr>
+                {thisCore.launches && (
+                  <tr>
+                    <td className="data-label launches">Launches:</td>
+                    <td className="data-value">
+                      {thisCore.launches.map((launch, id) => {
+                        return <p key={id} className="data-value">{launch}</p>;
+                      })}
+                    </td>
+                  </tr>
+                )}
+                <tr>
+                  <td className="data-label">ID:</td>
+                  <td className="data-value">{thisCore.id}</td>
+                </tr>
+              </Table>
             </Card.Body>
           </Accordion.Collapse>
         </Card>

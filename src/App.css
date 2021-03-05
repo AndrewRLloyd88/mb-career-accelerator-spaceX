@@ -7,6 +7,11 @@ body,
   min-height: 100vh;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 /* Include border and padding in element width and height */
 * {
   box-sizing: border-box;
