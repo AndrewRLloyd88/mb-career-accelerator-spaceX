@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import './App.css';
+import './App.css';/* Override react-bootstrap styling */
 import './Spinner.css';
 
 // Import types
@@ -52,7 +52,7 @@ function App({}: AppProps) {
           sort: {
             date_utc: 'desc',
           },
-          limit: 1000,
+          limit: 500,
         },
       })
       .then((response) => {
@@ -93,7 +93,7 @@ function App({}: AppProps) {
                         <Row>
                           <Col
                             xs={{ span: 12, order: 2 }}
-                            md={{ span: 9, order: 1 }}
+                            md={{ span: 10, order: 1 }}
                           >
                             {/* Fairings */}
                             {launch.fairings && (
@@ -112,7 +112,7 @@ function App({}: AppProps) {
 
                           <Col
                             xs={{ span: 12, order: 1 }}
-                            md={{ span: 3, order: 2 }}
+                            md={{ span: 2, order: 2 }}
                           >
                             {/* Rocket Image */}
                             <RocketImage

@@ -4,6 +4,12 @@ body,
 .col {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 /* Include border and padding in element width and height */
@@ -15,12 +21,15 @@ body,
 /* Custom properties */
 :root {
   --text-light: #fff;
+  --text-secondary: #BABABA;
+
   --bg-color-main: #090909;
   --bg-color-secondary: #222222;
 }
 
 
 /* Branding / Styling */
+
 body {
   font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
   color: var(--text-light);
@@ -32,18 +41,18 @@ body {
 
 .app-name {
   font-weight: 700;
-  text-align: center;
+  margin: 3vh auto 2vh;
 }
 
 
 /* Layout */
 
 .rocket-column {
-  padding: 3% 3% 3% 8%;
+  padding: 3% 5%;
 }
 
 .launch-column {
-  padding: 3% 10% 3% 3%;
+  padding: 3% 8%;
 }
 
 .main-carousel {
@@ -61,11 +70,12 @@ body {
 }
 
 .rocket-image {
-  max-height: 80vh;
+  min-height: 75vh;
 }
 
 .launch-patch {
-  max-height: 20vh;
+  max-height: 18vh;
+  margin: 8%;
 }
 
 
@@ -77,14 +87,24 @@ body {
 }
 
 .accordion .card {
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
   background-color: transparent;
   border-style: none;
+  max-width: 80%;
 }
 
-/* Override react-bootstrap styling */
+.accordion .card-body {
+  padding: 0;
+}
+
+.accordion-header {
+  border-bottom: 2px solid white;
+}
+
+/* .btn-link is accordion headers */
 .btn-link {
-  color: var(--text-light); 
+  color: var(--text-light); /* Override react-bootstrap styling */
+  font-size: 1.25rem;
 }
 
 .btn-link:hover,
@@ -95,7 +115,26 @@ body {
   color: var(--text-light);
 }
 
-.accordion-header {
-  border-bottom: 1px solid white;
+
+/* Table styles */
+
+.table {
+  color: var(--text-light);
 }
 
+.table tr:hover {
+  color: var(--text-secondary);
+}
+
+.table td {
+  padding: 3%;
+}
+
+.data-label {
+  text-align: left;
+  font-weight: 700;
+}
+
+.data-value {
+  text-align: right;
+}
