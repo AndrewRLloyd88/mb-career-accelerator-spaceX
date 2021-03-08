@@ -141,3 +141,23 @@ body {
   width: 50%;
   text-align: left;
 }
+
+/* Mission Specific Layout*/
+
+.mission-container {
+}
+
+.mission-name-container {
+}
+
+.mission-name {
+  font-size: 3rem;
+}
+
+.success {
+  color: chartreuse;
+}
+
+.failure {
+  color: crimson;
+}

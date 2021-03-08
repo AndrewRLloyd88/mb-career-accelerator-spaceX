@@ -129,17 +129,34 @@ function App({}: AppProps) {
                         md={{ span: 5, order: 2 }}
                         className="launch-column"
                       >
-                        Launch
-                        <div>Name: {launch.name}</div>
-                        {launch.details && <div>Details: {launch.details}</div>}
-                        <div>Flight Number: {launch.flight_number}</div>
-                        <div>
-                          Date: {new Date(launch.date_local).toDateString()}
+                        <div className="mission-container">
+                          <div className="mission-name-container">
+                            <div>Mission Name:</div>
+                            <div className="mission-name">{launch.name}</div>
+                          </div>
+                          {launch.details && (
+                            <div>Details: {launch.details}</div>
+                          )}
+                          <div>Flight Number: {launch.flight_number}</div>
+                          <div>
+                            Date: {new Date(launch.date_local).toDateString()}
+                          </div>
+                          {launch.success ? (
+                            <div>
+                              Success:{' '}
+                              <span className="success">
+                                {'Mission Accomplished'}
+                              </span>
+                            </div>
+                          ) : (
+                            <div>
+                              Success:{' '}
+                              <span className="failure">
+                                {'Mission Failed'}
+                              </span>
+                            </div>
+                          )}
                         </div>
-                        {/*<div>Launch ID: {launch.id}</div>*/}
-                        {launch.success && (
-                          <div>Success: {launch.success.toString()}</div>
-                        )}
                         {launch.links.patch.large && (
                           <Image
                             className="launch-patch"
