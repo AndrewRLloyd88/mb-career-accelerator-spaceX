@@ -131,31 +131,50 @@ function App({}: AppProps) {
                       >
                         <div className="mission-container">
                           <div className="mission-name-container">
-                            <div>Mission Name:</div>
-                            <div className="mission-name">{launch.name}</div>
-                          </div>
-                          {launch.details && (
-                            <div>Details: {launch.details}</div>
-                          )}
-                          <div>Flight Number: {launch.flight_number}</div>
-                          <div>
-                            Date: {new Date(launch.date_local).toDateString()}
-                          </div>
-                          {launch.success ? (
-                            <div>
-                              Success:{' '}
-                              <span className="success">
-                                {'Mission Accomplished'}
-                              </span>
+                            <div className="launch-name">
+                              <div>Mission Name:</div>
+                              <div className="mission-name">{launch.name}</div>
                             </div>
-                          ) : (
-                            <div>
-                              Success:{' '}
-                              <span className="failure">
-                                {'Mission Failed'}
-                              </span>
+                            <div className="flight-number">
+                              <div>Flight Number: </div>
+                              <div className="launch-num">
+                                {launch.flight_number}
+                              </div>
                             </div>
-                          )}
+                          </div>
+                          <table>
+                            <tbody>
+                              {launch.details && (
+                                <tr>
+                                  <td>{launch.details}</td>
+                                </tr>
+                              )}
+                              <tr>
+                                <td className="data-label">Date:</td>
+                                <td className="data-value">
+                                  {new Date(launch.date_local).toDateString()}
+                                </td>
+                              </tr>
+
+                              {launch.success ? (
+                                <tr>
+                                  <td className="data-label">Success:</td>
+                                  <td className="success data-value">
+                                    {' '}
+                                    {'Mission Accomplished'}
+                                  </td>
+                                </tr>
+                              ) : (
+                                <tr>
+                                  <td className="data-label">Success:</td>
+                                  <td className="data-value failure">
+                                    {' '}
+                                    {'Mission Failed'}
+                                  </td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
                         </div>
                         {launch.links.patch.large && (
                           <Image
