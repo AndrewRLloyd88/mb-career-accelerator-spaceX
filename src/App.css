@@ -166,3 +166,8 @@ body {
 .flight-number {
   width: 50%;
 }
+
+.launch-details {
+  padding: 20px 0;
+  text-align: left;
+}

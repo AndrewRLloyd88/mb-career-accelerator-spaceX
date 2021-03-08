@@ -142,13 +142,13 @@ function App({}: AppProps) {
                               </div>
                             </div>
                           </div>
+                          {launch.details && (
+                            <div className="launch-details">
+                              {launch.details}
+                            </div>
+                          )}
                           <table>
                             <tbody>
-                              {launch.details && (
-                                <tr>
-                                  <td>{launch.details}</td>
-                                </tr>
-                              )}
                               <tr>
                                 <td className="data-label">Date:</td>
                                 <td className="data-value">
