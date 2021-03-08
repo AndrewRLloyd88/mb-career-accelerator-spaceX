@@ -1,8 +1,8 @@
 // Imports
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
-import './App.css';/* Override react-bootstrap styling */
+import './App.css'; /* Override react-bootstrap styling */
 import './Spinner.css';
 
 // Import types
@@ -55,7 +55,7 @@ function App({}: AppProps) {
           limit: 500,
         },
       })
-      .then((response) => {
+      .then((response: AxiosResponse) => {
         // console.log(response.data.docs);
         setSlides(response.data.docs);
       })

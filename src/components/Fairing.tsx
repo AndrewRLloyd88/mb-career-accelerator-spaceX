@@ -30,28 +30,34 @@ const Fairing = (props: Props) => {
         <Accordion.Collapse eventKey="1">
           <Card.Body>
             <Table>
-              <tr>
-                <td className="data-label">Reused:</td>
-                <td className="data-value">{reused ? 'Reused' : 'Not Reused'}</td>
-              </tr>
-              <tr>
-                <td className="data-label">Recovery Attempt:</td>
-                <td className="data-value">{recovery_attempt ? 'Yes' : 'No'}</td>
-              </tr>
-              <tr>
-                <td className="data-label">Recovered:</td>
-                <td className="data-value">{recovered ? 'Yes' : 'No'}</td>
-              </tr>
-              {ships.length !== 0 && (
+              <tbody>
                 <tr>
-                  <td className="data-label">Fairing Recovery Ships:</td>
+                  <td className="data-label">Reused:</td>
                   <td className="data-value">
-                    {ships.map((ship, id) => {
-                      return <Ship key={id} ship={ship} />;
-                    })}
+                    {reused ? 'Reused' : 'Not Reused'}
                   </td>
                 </tr>
-              )}
+                <tr>
+                  <td className="data-label">Recovery Attempt:</td>
+                  <td className="data-value">
+                    {recovery_attempt ? 'Yes' : 'No'}
+                  </td>
+                </tr>
+                <tr>
+                  <td className="data-label">Recovered:</td>
+                  <td className="data-value">{recovered ? 'Yes' : 'No'}</td>
+                </tr>
+                {ships.length !== 0 && (
+                  <tr>
+                    <td className="data-label">Fairing Recovery Ships:</td>
+                    <td className="data-value">
+                      {ships.map((ship, id) => {
+                        return <Ship key={id} ship={ship} />;
+                      })}
+                    </td>
+                  </tr>
+                )}
+              </tbody>
             </Table>
           </Card.Body>
         </Accordion.Collapse>

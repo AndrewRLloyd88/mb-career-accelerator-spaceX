@@ -49,56 +49,52 @@ const Core = (props: Props) => {
           <Accordion.Collapse eventKey="1">
             <Card.Body>
               <Table>
-                <tr>
-                  <td className="data-label">Serial:</td>
-                  <td className="data-value">{thisCore.serial}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Status:</td>
-                  <td className="data-value">{thisCore.status}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Block:</td>
-                  <td className="data-value">{thisCore.block}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Last Update:</td>
-                  <td className="data-value">{thisCore.last_update}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Reuse Count:</td>
-                  <td className="data-value">{thisCore.reuse_count}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Return to Launch Site (RTLS) Attempts:</td>
-                  <td className="data-value">{thisCore.rtls_attempts}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Return to Launch Site (RTLS) Landings:</td>
-                  <td className="data-value">{thisCore.rtls_landings}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Autonomous Spaceport Drone Ship (ASDS) Landings:</td>
-                  <td className="data-value">{thisCore.asds_landings}</td>
-                </tr>
-                <tr>
-                  <td className="data-label">Autonomous Spaceport Drone Ship (ASDS) Attempts:</td>
-                  <td className="data-value">{thisCore.asds_attempts}</td>
-                </tr>
-                {thisCore.launches && (
+                <tbody>
                   <tr>
-                    <td className="data-label launches">Launches:</td>
-                    <td className="data-value">
-                      {thisCore.launches.map((launch, id) => {
-                        return <p key={id} className="data-value">{launch}</p>;
-                      })}
-                    </td>
+                    <td className="data-label">Serial:</td>
+                    <td className="data-value">{thisCore.serial}</td>
                   </tr>
-                )}
-                <tr>
-                  <td className="data-label">ID:</td>
-                  <td className="data-value">{thisCore.id}</td>
-                </tr>
+                  <tr>
+                    <td className="data-label">Status:</td>
+                    <td className="data-value">{thisCore.status}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">Block:</td>
+                    <td className="data-value">{thisCore.block}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">Last Update:</td>
+                    <td className="data-value">{thisCore.last_update}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">Reuse Count:</td>
+                    <td className="data-value">{thisCore.reuse_count}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">
+                      Return to Launch Site (RTLS) Attempts:
+                    </td>
+                    <td className="data-value">{thisCore.rtls_attempts}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">
+                      Return to Launch Site (RTLS) Landings:
+                    </td>
+                    <td className="data-value">{thisCore.rtls_landings}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">
+                      Autonomous Spaceport Drone Ship (ASDS) Landings:
+                    </td>
+                    <td className="data-value">{thisCore.asds_landings}</td>
+                  </tr>
+                  <tr>
+                    <td className="data-label">
+                      Autonomous Spaceport Drone Ship (ASDS) Attempts:
+                    </td>
+                    <td className="data-value">{thisCore.asds_attempts}</td>
+                  </tr>
+                </tbody>
               </Table>
             </Card.Body>
           </Accordion.Collapse>
