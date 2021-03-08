@@ -32,8 +32,10 @@ const Fairing = (props: Props) => {
             <Table>
               <tbody>
                 <tr>
-                  <td className="data-label">Reused:</td>
-                  <td className="data-value">
+                  <td className="data-label" style={{ borderTop: 0 }}>
+                    Reused:
+                  </td>
+                  <td className="data-value" style={{ borderTop: 0 }}>
                     {reused ? 'Reused' : 'Not Reused'}
                   </td>
                 </tr>

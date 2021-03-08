@@ -129,17 +129,53 @@ function App({}: AppProps) {
                         md={{ span: 5, order: 2 }}
                         className="launch-column"
                       >
-                        Launch
-                        <div>Name: {launch.name}</div>
-                        {launch.details && <div>Details: {launch.details}</div>}
-                        <div>Flight Number: {launch.flight_number}</div>
-                        <div>
-                          Date: {new Date(launch.date_local).toDateString()}
+                        <div className="mission-container">
+                          <div className="mission-name-container">
+                            <div className="launch-name">
+                              <div>Mission Name:</div>
+                              <div className="mission-name">{launch.name}</div>
+                            </div>
+                            <div className="flight-number">
+                              <div>Flight Number: </div>
+                              <div className="launch-num">
+                                {launch.flight_number}
+                              </div>
+                            </div>
+                          </div>
+                          {launch.details && (
+                            <div className="launch-details">
+                              {launch.details}
+                            </div>
+                          )}
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td className="data-label">Date:</td>
+                                <td className="data-value">
+                                  {new Date(launch.date_local).toDateString()}
+                                </td>
+                              </tr>
+
+                              {launch.success ? (
+                                <tr>
+                                  <td className="data-label">Success:</td>
+                                  <td className="success data-value">
+                                    {' '}
+                                    {'Mission Accomplished'}
+                                  </td>
+                                </tr>
+                              ) : (
+                                <tr>
+                                  <td className="data-label">Success:</td>
+                                  <td className="data-value failure">
+                                    {' '}
+                                    {'Mission Failed'}
+                                  </td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
                         </div>
-                        {/*<div>Launch ID: {launch.id}</div>*/}
-                        {launch.success && (
-                          <div>Success: {launch.success.toString()}</div>
-                        )}
                         {launch.links.patch.large && (
                           <Image
                             className="launch-patch"
