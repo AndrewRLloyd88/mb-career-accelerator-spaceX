@@ -51,8 +51,12 @@ const Core = (props: Props) => {
               <Table>
                 <tbody>
                   <tr>
-                    <td className="data-label">Serial:</td>
-                    <td className="data-value">{thisCore.serial}</td>
+                    <td className="data-label" style={{ borderTop: 0 }}>
+                      Serial:
+                    </td>
+                    <td className="data-value" style={{ borderTop: 0 }}>
+                      {thisCore.serial}
+                    </td>
                   </tr>
                   <tr>
                     <td className="data-label">Status:</td>

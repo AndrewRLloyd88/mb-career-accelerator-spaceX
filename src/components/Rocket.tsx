@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 // import react-bootstrap components
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 //import types
 import type {
@@ -54,32 +54,83 @@ const rocket = (props: Props) => {
             </div>
             <Accordion.Collapse eventKey="1">
               <Card.Body>
-                <div>Name: {rocket.payload.name}</div>
-                <div>Type: {rocket.payload.type}</div>
-                <div>
-                  Active: {rocket.payload.active ? 'Active' : 'Inactive'}
-                </div>
-                <div>Stages: {rocket.payload.stages}</div>
-                <div>Boosters: {rocket.payload.boosters}</div>
-                <div>
-                  Cost Per Launch:{' '}
-                  {rocket.payload.cost_per_launch.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                  })}
-                </div>
-                <div>Success Rate: {rocket.payload.success_rate_pct}%</div>
-                <div>First Flight: {rocket.payload.first_flight}</div>
-                <div>Country: {rocket.payload.country}</div>
-                <div>Company: {rocket.payload.company}</div>
-                <div>
-                  Wikipedia Information:{' '}
-                  <a href={rocket.payload.wikipedia}>
-                    {rocket.payload.wikipedia}
-                  </a>
-                </div>
-                <div>Payload Description: {rocket.payload.description}</div>
-                {/* <div>Payload ID: {rocket.payload.id}</div>*/}
+                <Table>
+                  <tbody>
+                    <tr>
+                      <td className="data-label" style={{ borderTop: 0 }}>
+                        Name:
+                      </td>
+                      <td className="data-value" style={{ borderTop: 0 }}>
+                        {rocket.payload.name}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Type:</td>
+                      <td className="data-value">{rocket.payload.type}</td>
+                    </tr>
+                    <tr>
+                      <td className="data-label"> Active:</td>
+                      <td className="data-value">
+                        {rocket.payload.active ? 'Active' : 'Inactive'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Stages:</td>
+                      <td className="data-value">{rocket.payload.stages}</td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Boosters:</td>
+                      <td className="data-value">{rocket.payload.boosters}</td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Cost Per Launch:</td>
+                      <td className="data-value">
+                        {rocket.payload.cost_per_launch.toLocaleString(
+                          'en-US',
+                          {
+                            style: 'currency',
+                            currency: 'USD',
+                          },
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Success Rate:</td>
+                      <td className="data-value">
+                        {rocket.payload.success_rate_pct}%
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">First Flight:</td>
+                      <td className="data-value">
+                        {rocket.payload.first_flight}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Country:</td>
+                      <td className="data-value">{rocket.payload.country}</td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Company:</td>
+                      <td className="data-value">{rocket.payload.company}</td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Wikipedia Information:</td>
+                      <td className="data-value">
+                        {' '}
+                        <a href={rocket.payload.wikipedia}>
+                          {rocket.payload.wikipedia}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="data-label">Payload Description:</td>
+                      <td className="data-value">
+                        {rocket.payload.description}
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
