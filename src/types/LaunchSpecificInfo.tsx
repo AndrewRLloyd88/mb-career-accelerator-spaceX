@@ -25,6 +25,9 @@ interface Links {
     small: string;
     large: string;
   };
+  reddit: {
+    launch: string;
+  };
 }
 
 export interface LaunchObject {
