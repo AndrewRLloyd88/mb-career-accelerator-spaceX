@@ -23,7 +23,7 @@ p {
   --text-secondary: #bababa;
 
   --bg-color-main: #090909;
-  --bg-color-secondary: #222222;
+  --bg-color-secondary: #333333;
 }
 
 /* Branding / Styling */
@@ -43,16 +43,17 @@ body {
 .app-name {
   font-weight: 700;
   margin: 3vh auto 2vh;
+  letter-spacing: .1rem;
 }
 
 /* Layout */
 
 .rocket-column {
-  padding: 3% 5%;
+  padding: 3%;
 }
 
 .launch-column {
-  padding: 3% 8%;
+  padding: 3% 6%;
 }
 
 .main-carousel {
@@ -152,6 +153,7 @@ body {
 .launch-num {
   font-size: 2.5rem;
   font-weight: bold;
+  line-height: 1;
 }
 
 .success {
@@ -170,4 +172,30 @@ body {
 .launch-details {
   padding: 20px 0;
   text-align: left;
+}
+
+
+/* Mobile Styles */
+
+@media (hover: none) { 
+
+  .app-name {
+    font-size: 2.5rem;
+    letter-spacing: 0;
+  }
+
+  .rocket-column {
+    padding: 3% 0;
+  }
+
+  .rocket-image {
+    min-height: 60vh;
+    margin-bottom: 2.5rem;
+  }
+
+  .mission-name,
+  .launch-num {
+    font-size: 1.75rem;
+  }
+  
 }

@@ -43,7 +43,7 @@ const Core = (props: Props) => {
           {/* Change Card.Header to div for more flexibility */}
           <div className="accordion-header">
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              Cores
+              Core
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="1">

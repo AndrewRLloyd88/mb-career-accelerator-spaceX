@@ -20,13 +20,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 // React-Bootstrap Components
+import Navbar from 'react-bootstrap/Navbar';
 import Image from 'react-bootstrap/Image';
 import Carousel from 'react-bootstrap/Carousel';
 import Spinner from './components/Spinner';
 
-interface AppProps {}
+interface AppProps { }
 
-function App({}: AppProps) {
+function App({ }: AppProps) {
   // typeof launchSlides is expected to be array of LaunchObject's
   // Then set launchSlides initial state to empty array
   const [launchSlides, setSlides] = useState<LaunchObject[]>([]);
@@ -68,7 +69,7 @@ function App({}: AppProps) {
       <Container fluid>
         {/* Header */}
         <Row>
-          <h1 className="app-name justify-content-center">SpaceXploration</h1>
+          <h1 className="app-name">SpaceXploration.com</h1>
         </Row>
 
         {/* Main Body and Carousel */}
@@ -79,6 +80,7 @@ function App({}: AppProps) {
               fade={true}
               indicators={false}
               interval={null}
+              touch={false}
             >
               {launchSlides.map((launch: LaunchObject, idx) => (
                 <Carousel.Item key={launch.id}>
@@ -177,10 +179,12 @@ function App({}: AppProps) {
                           </table>
                         </div>
                         {launch.links.patch.large && (
-                          <Image
-                            className="launch-patch"
-                            src={launch.links.patch.large}
-                          />
+                          <a href={launch.links.reddit.launch} target="_blank">
+                            <Image
+                              className="launch-patch"
+                              src={launch.links.patch.large}
+                            />
+                          </a>
                         )}
                       </Col>
                     </Row>

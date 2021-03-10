@@ -118,7 +118,7 @@ const rocket = (props: Props) => {
                       <td className="data-label">Wikipedia Information:</td>
                       <td className="data-value">
                         {' '}
-                        <a href={rocket.payload.wikipedia}>
+                        <a href={rocket.payload.wikipedia} target="_blank">
                           {rocket.payload.wikipedia}
                         </a>
                       </td>
